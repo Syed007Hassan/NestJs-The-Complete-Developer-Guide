@@ -2,15 +2,15 @@
 # GET http://localhost:3000/messages
 
 # Post a specific message
-POST http://localhost:3000/messages HTTP/1.1
-Content-Type: application/json
+# POST http://localhost:3000/messages HTTP/1.1
+# Content-Type: application/json
 
-{
-    "message": "Hello World"
-}
+# {
+#     "content": "Hello World"
+# }
 
 
-# Get a specific message
+# # Get a specific message
 
-GET http://localhost:3000/messages/1
+# GET http://localhost:3000/messages/1
 
