@@ -8,5 +8,6 @@ import { PowerModule } from '../power/power.module';
   imports: [PowerModule],
   providers: [CpuService],
   controllers: [CpuController],
+  exports: [CpuService],
 })
 export class CpuModule {}
