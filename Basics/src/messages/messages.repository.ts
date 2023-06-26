@@ -20,6 +20,8 @@ export class MessagesRepository {
   async create(content: string) {
     const contents = await readFile('messages.json', 'utf8');
     const messages = JSON.parse(contents);
+    const messageCount = Object.keys(messages).length;
+    console.log(`There are ${messageCount} messages.`);
 
     const id = Math.floor(Math.random() * 999);
 
