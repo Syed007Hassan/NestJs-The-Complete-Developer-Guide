@@ -33,7 +33,11 @@ export class UsersController {
 
   @Get()
   findAllUsers(@Query('email') email: string) {
-    return this.usersService.findByEmail(email);
+    const users = this.usersService.findByEmail(email);
+    if (!users) {
+      throw new NotFoundException('user not found');
+    }
+    return users;
   }
 
   @Delete('/:id')

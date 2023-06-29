@@ -14,11 +14,19 @@ export class UsersService {
   }
 
   findOne(id: number) {
+    if (!id) {
+      return null;
+    }
     return this.repo.findOne({ where: { id } });
   }
 
   findByEmail(email: string) {
-    return this.repo.findOne({ where: { email } });
+    const user = this.repo.findOne({ where: { email } });
+    console.log(user);
+    if (!user) {
+      throw new NotFoundException('user not found');
+    }
+    return user;
   }
 
   async update(id: number, attrs: Partial<User>) {
