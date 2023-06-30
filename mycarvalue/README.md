@@ -26,6 +26,26 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+
+## What's included
+
+<div align="center">
+![Control Flow Of NestJS](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Control%20flow.jpg)
+
+![Modules](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Modules.jpg)
+
+![APIS](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/APIs.jpg)
+
+![TypeORM](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/TypeORM.jpg)
+
+![Migration](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Migration.png)
+
+![Repository](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Repo%20API.png)
+
+![Custom Exception Handling](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Exception%20handling%20.jpg)
+
+</div>
+
 ## Installation
 
 ```bash
