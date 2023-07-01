@@ -17,8 +17,8 @@ export class User {
   email: string;
 
   // Exclude decorator is used to exclude a property from being returned in the response
+  // @Exclude()
   @Column()
-  @Exclude()
   password: string;
 
   // hooks are used to run code before or after certain events
