@@ -6,6 +6,7 @@ import {
   Column,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 export class User {
@@ -15,7 +16,9 @@ export class User {
   @Column()
   email: string;
 
+  // Exclude decorator is used to exclude a property from being returned in the response
   @Column()
+  @Exclude()
   password: string;
 
   // hooks are used to run code before or after certain events
