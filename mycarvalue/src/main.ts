@@ -2,9 +2,18 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { Logger } from '@nestjs/common';
 
 async function bootstrap() {
+  const logger = new Logger();
+
   const app = await NestFactory.create(AppModule);
+
+  // Log each request
+  app.use((req, res, next) => {
+    logger.log(`Request ${req.method} ${req.originalUrl}`);
+    next();
+  });
 
   (app as any).set('etag', false);
 
@@ -29,5 +38,7 @@ async function bootstrap() {
     }),
   );
   await app.listen(3000);
+
+  logger.log(`Application listening on port 3000`);
 }
 bootstrap();
