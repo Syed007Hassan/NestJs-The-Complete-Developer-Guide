@@ -26,4 +26,20 @@ export class AuthService {
 
     return user;
   }
+
+  async signin(email: string, password: string) {
+    const user = await this.usersService.findByEmail(email);
+
+    if (!user) {
+      throw new BadRequestException('Invalid credentials');
+    }
+
+    const [salt, storedHash] = user.password.split('.'); //split salt and hash
+    const hash = (await scrypt(password, salt, 32)) as Buffer; //hash users password
+    if (storedHash !== hash.toString('hex')) {
+      throw new BadRequestException('Invalid credentials');
+    }
+
+    return user;
+  }
 }

@@ -29,6 +29,11 @@ export class UsersController {
     return this.authService.signup(body.email, body.password);
   }
 
+  @Post('/signin')
+  signin(@Body() body: CreateUserDto) {
+    return this.authService.signin(body.email, body.password);
+  }
+
   // @UseInterceptors(new SerializeInterceptor(UserDto))
   // ClassSerializerInterceptor is used to exclude the password property from the response
   @Get('/:id')
