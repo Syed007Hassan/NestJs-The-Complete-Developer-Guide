@@ -8,6 +8,7 @@ import {
   Param,
   Query,
   NotFoundException,
+  Res,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user-dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
@@ -15,6 +16,7 @@ import { UsersService } from './users.service';
 import { UserDto } from './dtos/user.dto';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { AuthService } from './auth.service';
+import { Response } from 'express';
 
 @Controller('auth')
 @Serialize(UserDto)
@@ -30,8 +32,10 @@ export class UsersController {
   }
 
   @Post('/signin')
-  signin(@Body() body: CreateUserDto) {
-    return this.authService.signin(body.email, body.password);
+  async signin(@Body() body: CreateUserDto, @Res() res: Response) {
+    const user = await this.authService.signin(body.email, body.password);
+    res.cookie('token', user.id, { httpOnly: true, maxAge: 86400000 }); // Expires in 1 day
+    return { message: 'User signed in successfully', user };
   }
 
   // @UseInterceptors(new SerializeInterceptor(UserDto))
