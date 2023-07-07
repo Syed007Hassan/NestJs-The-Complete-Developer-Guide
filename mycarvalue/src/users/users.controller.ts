@@ -34,8 +34,13 @@ export class UsersController {
   @Post('/signin')
   async signin(@Body() body: CreateUserDto, @Res() res: Response) {
     const user = await this.authService.signin(body.email, body.password);
-    res.cookie('token', user.id, { httpOnly: true, maxAge: 86400000 }); // Expires in 1 day
-    return { message: 'User signed in successfully', user };
+    res.cookie('myCookie', 'Hello World!', { httpOnly: true });
+
+    if (!user) {
+      throw new NotFoundException('user not found');
+    }
+
+    return res.send(user);
   }
 
   // @UseInterceptors(new SerializeInterceptor(UserDto))
