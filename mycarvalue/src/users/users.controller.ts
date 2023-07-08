@@ -18,6 +18,7 @@ import { UserDto } from './dtos/user.dto';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { AuthService } from './auth.service';
 import { Response } from 'express';
+import { CurrentUser } from './decorators/current-user-decorator';
 
 @Controller('auth')
 @Serialize(UserDto)
@@ -27,12 +28,17 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
+  // @Get('/whoami')
+  // whoAmI(@Session() session: any) {
+  //   const user = this.usersService.findOne(session.userId);
+  //   if (!user) {
+  //     throw new NotFoundException('no user signed in');
+  //   }
+  //   return user;
+  // }
+
   @Get('/whoami')
-  whoAmI(@Session() session: any) {
-    const user = this.usersService.findOne(session.userId);
-    if (!user) {
-      throw new NotFoundException('no user signed in');
-    }
+  whoAmI(@CurrentUser() user: UserDto) {
     return user;
   }
 
