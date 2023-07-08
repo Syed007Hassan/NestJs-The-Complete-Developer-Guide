@@ -29,7 +29,11 @@ export class UsersController {
 
   @Get('/whoami')
   whoAmI(@Session() session: any) {
-    return this.usersService.findOne(session.userId);
+    const user = this.usersService.findOne(session.userId);
+    if (!user) {
+      throw new NotFoundException('no user signed in');
+    }
+    return user;
   }
 
   @Post('/signup')
@@ -54,6 +58,11 @@ export class UsersController {
     session.userId = user.id;
 
     return res.send(user);
+  }
+
+  @Post('/signOut')
+  singOut(@Session() session: any) {
+    session.userId = null;
   }
 
   // @UseInterceptors(new SerializeInterceptor(UserDto))
