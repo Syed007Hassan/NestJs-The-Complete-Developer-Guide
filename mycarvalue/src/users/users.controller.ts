@@ -20,25 +20,20 @@ import { AuthService } from './auth.service';
 import { Response } from 'express';
 import { CurrentUser } from './decorators/current-user-decorator';
 import { CurrentUserInterceptor } from './interceptors/current-user-intetrceptor';
+import { UseInterceptors } from '@nestjs/common';
+import { User } from './user.entity';
+
 @Controller('auth')
 @Serialize(UserDto)
+@UseInterceptors(CurrentUserInterceptor)
 export class UsersController {
   constructor(
     private usersService: UsersService,
     private authService: AuthService,
   ) {}
 
-  // @Get('/whoami')
-  // whoAmI(@Session() session: any) {
-  //   const user = this.usersService.findOne(session.userId);
-  //   if (!user) {
-  //     throw new NotFoundException('no user signed in');
-  //   }
-  //   return user;
-  // }
-
   @Get('/whoami')
-  whoAmI(@CurrentUser() user: string) {
+  whoAmI(@CurrentUser() user: User) {
     return user;
   }
 
@@ -62,7 +57,6 @@ export class UsersController {
     }
 
     session.userId = user.id;
-
     return res.send(user);
   }
 
