@@ -10,6 +10,8 @@ import {
   NotFoundException,
   Res,
   Session,
+  UseInterceptors,
+  UseGuards,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user-dto';
 import { UpdateUserDto } from './dtos/update-user.dto';
@@ -20,8 +22,8 @@ import { AuthService } from './auth.service';
 import { Response } from 'express';
 import { CurrentUser } from './decorators/current-user-decorator';
 import { CurrentUserInterceptor } from './interceptors/current-user-intetrceptor';
-import { UseInterceptors } from '@nestjs/common';
 import { User } from './user.entity';
+import { AuthGuard } from '../guards/auth.guards';
 
 @Controller('auth')
 @Serialize(UserDto)
@@ -32,6 +34,8 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
+  //use guards to protect routes from unauthorized access
+  @UseGuards(AuthGuard)
   @Get('/whoami')
   whoAmI(@CurrentUser() user: User) {
     return user;
