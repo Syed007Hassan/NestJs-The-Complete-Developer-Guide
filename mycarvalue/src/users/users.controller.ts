@@ -19,7 +19,7 @@ import { Serialize } from '../interceptors/serialize.interceptor';
 import { AuthService } from './auth.service';
 import { Response } from 'express';
 import { CurrentUser } from './decorators/current-user-decorator';
-
+import { CurrentUserInterceptor } from './interceptors/current-user-intetrceptor';
 @Controller('auth')
 @Serialize(UserDto)
 export class UsersController {
@@ -38,7 +38,7 @@ export class UsersController {
   // }
 
   @Get('/whoami')
-  whoAmI(@CurrentUser() user: UserDto) {
+  whoAmI(@CurrentUser() user: string) {
     return user;
   }
 
