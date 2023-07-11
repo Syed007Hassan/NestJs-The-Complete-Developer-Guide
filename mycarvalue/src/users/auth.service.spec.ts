@@ -1,14 +1,17 @@
 import { Test } from '@nestjs/testing';
 import { AuthService } from './auth.service';
 import { UsersService } from './users.service';
+import { User } from './user.entity';
 
 it('can create an instance of auth service', async () => {
   //create a fake copy of the users service
 
-  const fakeUsersService = {
-    find: () => Promise.resolve([]),
+  const fakeUsersService: Partial<UsersService> = {
+    findByEmail(email) {
+      return Promise.resolve({ id: 1, email, password: 'password' } as User);
+    },
     create: (email: string, password: string) => {
-      return Promise.resolve({ id: 1, email, password });
+      return Promise.resolve({ id: 1, email, password } as User);
     },
   };
 
