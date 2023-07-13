@@ -63,4 +63,27 @@ describe('AuthService', () => {
       expect(e).toBeDefined();
     }
   });
+
+  it('throws if invalid password is provided', async () => {
+    fakeUsersService.findByEmail = () =>
+      Promise.resolve({ id: 1, email: 'a', password: '1' } as User);
+
+    try {
+      await service.signin('sdfdf', 'password');
+    } catch (e) {
+      expect(e).toBeDefined();
+    }
+  });
+
+  it('returns a user if correct password is provided', async () => {
+    fakeUsersService.findByEmail = () =>
+      Promise.resolve({
+        email: 'sdfdf',
+        password: 'password.hash.',
+      } as User);
+
+    const user = await service.signin('sdfdfgg', 'password');
+
+    expect(user).toBeDefined();
+  });
 });
