@@ -55,4 +55,12 @@ describe('AuthService', () => {
       expect(e).toBeDefined();
     }
   });
+
+  it('throws if signin is called with an unused email', async () => {
+    try {
+      await service.signin('sdfdf', 'password');
+    } catch (e) {
+      expect(e).toBeDefined();
+    }
+  });
 });
