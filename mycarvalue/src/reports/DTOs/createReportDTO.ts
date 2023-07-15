@@ -26,12 +26,10 @@ export class createReportDTO {
 
   @ApiProperty()
   @IsNumber()
-  @IsLatLong()
   lng: number;
 
   @ApiProperty()
   @IsNumber()
-  @IsLatLong()
   lat: number;
 
   @ApiProperty()
