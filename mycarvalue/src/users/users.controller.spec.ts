@@ -15,7 +15,7 @@ describe('UsersController', () => {
         return Promise.resolve({ id, email: 'a', password: '1' } as User);
       },
       findByEmail: (email: string) => {
-        return Promise.resolve([{ id: 1, email, password: '1' } as User]);
+        return Promise.resolve({ id: 1, email, password: '1' } as User);
       },
       update: (id: number, attrs: Partial<User>) => {
         return Promise.resolve({ id, email: 'a', password: '1' } as User);
@@ -27,6 +27,16 @@ describe('UsersController', () => {
 
     const module: TestingModule = await Test.createTestingModule({
       controllers: [UsersController],
+      providers: [
+        {
+          provide: UsersService,
+          useValue: fakeUsersService,
+        },
+        {
+          provide: AuthService,
+          useValue: fakeAuthService,
+        },
+      ],
     }).compile();
 
     controller = module.get<UsersController>(UsersController);
