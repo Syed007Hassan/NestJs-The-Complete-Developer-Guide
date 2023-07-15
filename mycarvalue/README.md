@@ -68,6 +68,19 @@
 
 ![Interceptors](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Interceptor%20.jpg)
 
+### Auth System
+
+![Interceptors](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/AuthSystem.jpg)
+
+### Authentication
+
+![Interceptors](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Authentication.jpg)
+
+
+### DI Container Testing
+
+![Interceptors](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Di%20container%20Testing.jpg)
+
 </div>
 
 ## Installation
