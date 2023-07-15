@@ -6,14 +6,23 @@ import { UsersModule } from './users/users.module';
 import { ReportsModule } from './reports/reports.module';
 import { User } from './users/user.entity';
 import { Report } from './reports/report.entity';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'db.sqlite',
-      entities: [User, Report],
-      synchronize: true,
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: `.env.development`,
+    }),
+    // below is way to use async config service to get db name from .env file
+    TypeOrmModule.forRootAsync({
+      useFactory: async (config: ConfigService) => ({
+        type: 'sqlite',
+        database: config.get('DB_NAME'),
+        entities: [User, Report],
+        synchronize: true,
+      }),
+      inject: [ConfigService],
     }),
     UsersModule,
     ReportsModule,
