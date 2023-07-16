@@ -4,6 +4,7 @@ import { ReportsService } from './reports.service';
 import { AuthGuard } from 'src/guards/auth.guards';
 import { CurrentUser } from 'src/users/decorators/current-user-decorator';
 import { User } from 'src/users/user.entity';
+import { Serialize } from 'src/interceptors/serialize.interceptor';
 
 @Controller('reports')
 @UseGuards(new AuthGuard())
