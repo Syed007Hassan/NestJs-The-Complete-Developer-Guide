@@ -81,6 +81,21 @@
 
 ![Interceptors](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Di%20container%20Testing.jpg)
 
+
+### Association
+
+![Interceptors](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Associations.jpg)
+
+
+###  Association Setup
+
+![Interceptors](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Association%20setup.jpg)
+
+
+###  Association Decorator
+
+![Interceptors](https://github.com/Syed007Hassan/NestJs-The-Complete-Developer-Guide/blob/main/mycarvalue/Association%20decorator.jpg)
+
 </div>
 
 ## Installation
