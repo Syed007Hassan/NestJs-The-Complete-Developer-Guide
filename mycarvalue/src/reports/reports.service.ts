@@ -14,4 +14,15 @@ export class ReportsService {
     report.user = user; // this is how we associate a user with a report
     return this.repo.save(report);
   }
+  async changeApproval(id: string, approved: boolean) {
+    const _id = parseInt(id);
+    const report = await this.repo.findOne({ where: { id: _id } });
+
+    if (!report) {
+      throw new Error('report not found');
+    }
+
+    report.approved = approved;
+    return this.repo.save(report);
+  }
 }

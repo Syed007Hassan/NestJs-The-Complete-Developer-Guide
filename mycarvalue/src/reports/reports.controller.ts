@@ -13,6 +13,7 @@ import { CurrentUser } from 'src/users/decorators/current-user-decorator';
 import { User } from 'src/users/user.entity';
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { ReportDto } from './DTOs/report.dto';
+import { ApprovedReportDTO } from './DTOs/approvedReportDTO';
 
 @Controller('reports')
 @UseGuards(new AuthGuard())
@@ -29,5 +30,7 @@ export class ReportsController {
   }
 
   @Patch('/:id')
-  approvedReport(@Param('id') id: string, @Body() body: ApprovedReportDTO) {}
+  approvedReport(@Param('id') id: string, @Body() body: ApprovedReportDTO) {
+    return this.reportsService.changeApproval(id, body.approved);
+  }
 }
