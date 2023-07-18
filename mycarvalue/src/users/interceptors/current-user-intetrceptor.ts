@@ -21,7 +21,7 @@ export class CurrentUserInterceptor implements NestInterceptor {
     const { userId } = request.session || {};
     if (userId) {
       const user = await this.usersService.findOne(userId);
-      // log('user', user);
+      // c
       request.currentUser = user;
     }
     return next.handle();
