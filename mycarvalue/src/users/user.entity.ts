@@ -23,6 +23,9 @@ export class User {
   @Column()
   password: string;
 
+  @Column({ default: true })
+  admin: boolean;
+
   //adding associations to the user entity
   @OneToMany(() => Report, (report) => report.user)
   reports: Report[];
