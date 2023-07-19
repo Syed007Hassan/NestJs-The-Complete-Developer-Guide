@@ -36,7 +36,7 @@ async function bootstrap() {
 
   // app.use(cookieParser());
 
-  // app.use(cookieSession({ keys: ['mysecret'] }));
+  app.use(cookieSession({ keys: ['mysecret'] }));
 
   app.useGlobalPipes(
     new ValidationPipe({
