@@ -7,7 +7,7 @@ import { ReportsModule } from './reports/reports.module';
 import { User } from './users/user.entity';
 import { Report } from './reports/report.entity';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import cookieSession from 'cookie-session';
+const cookieSession = require('cookie-session');
 
 @Module({
   imports: [
@@ -33,12 +33,10 @@ import cookieSession from 'cookie-session';
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(
-        cookieSession({
-          keys: ['asdfasdf'],
-        }),
-      )
-      .forRoutes('*');
+    consumer.apply(
+      cookieSession({
+        keys: ['mysecret'],
+      }),
+    );
   }
 }
