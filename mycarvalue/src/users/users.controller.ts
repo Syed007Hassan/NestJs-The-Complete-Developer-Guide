@@ -24,7 +24,9 @@ import { CurrentUser } from './decorators/current-user-decorator';
 import { CurrentUserInterceptor } from './interceptors/current-user-intetrceptor';
 import { User } from './user.entity';
 import { AuthGuard } from '../guards/auth.guards';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Users')
 @Controller('auth')
 @Serialize(UserDto)
 @UseInterceptors(CurrentUserInterceptor)
