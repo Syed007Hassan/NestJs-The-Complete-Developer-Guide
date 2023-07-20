@@ -41,7 +41,7 @@ export class ReportsController {
     return this.reportsService.changeApproval(id, body.approved);
   }
 
-  @Get()
+  @Get('/estimates')
   getEstimate(@Query() query: GetEstimateDTO) {
     return this.reportsService.createEstimate(query);
   }
